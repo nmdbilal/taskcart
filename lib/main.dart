@@ -22,19 +22,22 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_, __) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-          useMaterial3: true,
-          fontFamily: 'Roboto',
-        ),
-        home: MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (_) => sl<TodoBloc>()),
-            BlocProvider(create: (_) => sl<EcommerceBloc>()),
-          ],
-          child: const MainNavigation(),
+      builder: (_, _) => SafeArea(
+        top: false,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+            useMaterial3: true,
+            fontFamily: 'Roboto',
+          ),
+          home: MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => sl<TodoBloc>()),
+              BlocProvider(create: (_) => sl<EcommerceBloc>()),
+            ],
+            child: const MainNavigation(),
+          ),
         ),
       ),
     );
